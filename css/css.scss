@@ -1,3 +1,23 @@
 .myCanvas{
     border: 0px none black;
 }
+
+#canvas{
+    margin: auto;
+}
+
+#left-side-bar{
+    width: 250px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 0;
+}
+
+#right-side-bar{
+    width: 250px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 0;
+}

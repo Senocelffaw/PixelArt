@@ -1,24 +1,25 @@
 export default class Canvas{
 
-    gridSideLength = 100;
+    gridSideLength = 32;
     pixelsPerSquare;
     width;
     height;
     ctx;
+    canvas;
 
 
     initializeCanvas(){
-        var canvas = $("#myCanvas")[0];
+        this.canvas = $("#myCanvas")[0];
         var viewport = $(window);
         
         this.height = (viewport.height() - ((viewport.height() * 0.75) % this.gridSideLength)) * 0.75;
         this.width = (viewport.width() - ((viewport.width() / 2) % this.gridSideLength)) / 2;
 
-        canvas.height = this.heightOrWidth();
-        canvas.width = this.heightOrWidth();
+        this.canvas.height = this.heightOrWidth();
+        this.canvas.width = this.heightOrWidth();
         this.pixelsPerSquare = this.heightOrWidth()/this.gridSideLength;
         
-        this.ctx = canvas.getContext("2d");
+        this.ctx = this.canvas.getContext("2d");
         this.ctx.fillStyle = "white";
         this.ctx.fillRect(0, 0, this.width, this.height);
     }
