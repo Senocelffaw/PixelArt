@@ -1,6 +1,7 @@
 export default class Canvas{
 
-    gridSideLength = 32;
+    gridSideLength = 16;
+    grid = new Array();
     pixelsPerSquare;
     width;
     height;
@@ -22,6 +23,14 @@ export default class Canvas{
         this.ctx = this.canvas.getContext("2d");
         this.ctx.fillStyle = "white";
         this.ctx.fillRect(0, 0, this.width, this.height);
+
+        this.initializeGrid();
+    }
+
+    initializeGrid(){
+        for(var i  = 0; i < this.gridSideLength; i++){
+            this.grid[i] = new Array(this.gridSideLength);
+        }
     }
 
     drawGrid(){ 
@@ -55,6 +64,14 @@ export default class Canvas{
             return this.width;
         }
         return this.height;
+    }
+
+    getMousePos(event){
+        var rect = this.canvas.getBoundingClientRect();
+        return{
+            x: event.clientX - rect.left,
+            y: event.clientY - rect.top
+        };
     }
 
 
