@@ -1,5 +1,7 @@
 export default class Canvas{
 
+    currentColour = "#000000";
+
     gridSideLength = 16;
     grid = new Array();
     pixelsPerSquare;
@@ -40,21 +42,25 @@ export default class Canvas{
                 if(i % 2 == 0){
                     if(j % 2 == 0){
                         this.ctx.fillStyle = "#FFFFFF";
+                        this.grid[j][i] = "#FFFFFF";
                     }
                     else{
                         this.ctx.fillStyle = "#d3d3d3";
+                        this.grid[j][i] = "#d3d3d3";
                     }
                 }
                 else{
                     if(j % 2 == 0){
                         this.ctx.fillStyle = "#d3d3d3";
+                        this.grid[j][i] = "#d3d3d3";
                     }
                     else{
                         this.ctx.fillStyle = "#FFFFFF";
+                        this.grid[j][i] = "#FFFFFF";
                     }
                 }
                 this.ctx.beginPath();
-                this.ctx.fillRect(j * this.pixelsPerSquare, i * this.pixelsPerSquare, j * this.pixelsPerSquare + this.pixelsPerSquare, i * this.pixelsPerSquare + this.pixelsPerSquare);
+                this.ctx.fillRect(j * this.pixelsPerSquare, i * this.pixelsPerSquare, this.pixelsPerSquar+1, this.pixelsPerSquare+1);
             }
         }
     }
@@ -74,7 +80,30 @@ export default class Canvas{
         };
     }
 
+    positionToGrid(mousePosition){
+        return{
+            x: Math.floor(mousePosition.x / this.pixelsPerSquare),
+            y: Math.floor(mousePosition.y / this.pixelsPerSquare)
+        };
+    }
 
+    canvasClick(event){
+        var pos = this.getMousePos(event);
+        var gridPos = this.positionToGrid(pos);
+        this.grid[this.positionToGrid(pos).x][this.positionToGrid(pos).y] = this.currentColour;
+        //alert(this.positionToGrid(pos).x + " " + this.positionToGrid(pos).y);
+        this.draw();
+    }
+
+    draw(){
+        for(var i = 0; i < this.gridSideLength; i++){
+            for(var j = 0; j < this.gridSideLength; j++){
+                this.ctx.fillStyle = this.grid[i][j];
+                this.ctx.beginPath();
+                this.ctx.fillRect(i * this.pixelsPerSquare, j * this.pixelsPerSquare, this.pixelsPerSquare+1, this.pixelsPerSquare+1);
+            }
+        }
+    }
 
 }
 
