@@ -105,5 +105,9 @@ export default class Canvas{
         }
     }
 
+    clearCanvas(){
+        this.drawGrid();
+        this.draw();
+    }
 }
 

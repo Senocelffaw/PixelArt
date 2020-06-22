@@ -24,3 +24,9 @@ $("#myCanvas")[0].onmousemove = function(e){
         canvas.canvasClick(e);
     }
 }
+
+$("#clear")[0].onmousedown = function(e){
+    if(confirm("Are you sure you want to clear the canvas?")){
+        canvas.clearCanvas();
+    }
+}
