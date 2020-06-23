@@ -30,3 +30,15 @@ $("#clear")[0].onmousedown = function(e){
         canvas.clearCanvas();
     }
 }
+
+$("#change")[0].onmousedown = function(e){
+    var value = $("#grid-size")[0].value;
+    if(value > 0 && value <= 100){
+        if(confirm("Are you sure you want to change the canvas size?")){
+            canvas.changeCanvasSize($("#grid-size")[0].value);
+        }
+    }
+    else{
+        alert("Grid size must be between 1 and 100");
+    }
+}

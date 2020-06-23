@@ -12,8 +12,15 @@
     <div class=" d-flex bg-dark ">
         <!------Left Sidebar-->
         <div id="left-side-bar" class="bg-secondary min-vh-100 col-2">
-            <div class="wrapper m-auto col-12">
+            <div class="left-side-wrapper m-auto col-12">
                 <button id="clear" class="btn btn-primary col-12 mt-3">Clear Canvas</button>
+
+                <div class="d-flex justify-content-between col-12 p-0 my-2">
+                    <p class="col-6 p-0 m-0 d-flex text-left">Side Length: </p>
+                    <input type="text" id="grid-size" class="col-6 p-0 d-flex justify-content-end" min="0" max="500">
+                </div>
+
+                <button id="change" class="btn btn-warning col-12">Change Board Size</button>
             </div>
         </div>
 
@@ -26,7 +33,11 @@
 
         <!------Right Sidebar-->
         <div id="right-side-bar" class="bg-secondary min-vh-100 col-2">
-
+            <div class="right-side-wrapper mt-3">
+                <div class="colour-selector">
+                    <img src="../img/colourpicker.png" draggable="false" class="col-12" alt="Colour Picker">
+                </div>
+            </div>
         </div>
     </div>
 

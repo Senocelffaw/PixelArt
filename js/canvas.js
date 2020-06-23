@@ -35,6 +35,13 @@ export default class Canvas{
         }
     }
 
+    changeCanvasSize(num){
+        this.gridSideLength = num;
+        this.initializeCanvas();
+        this.drawGrid();
+        this.draw();
+    }
+
     drawGrid(){ 
         for(var i = 0; i < this.gridSideLength; i++){
             for(var j = 0; j < this.gridSideLength; j++){
