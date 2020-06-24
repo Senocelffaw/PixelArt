@@ -21,3 +21,32 @@
     right: 0;
     padding: 0;
 }
+
+#colour-choice{
+    background-color: red;
+    min-height: 50px;
+}
+
+.undraggable{
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+}
+
+.unselectable{
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+#black-gradient{
+    background-image: url("../img/blackgradient.png");
+    -webkit-appearance: none;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    height: 25px;
+}

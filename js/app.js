@@ -1,10 +1,19 @@
 import Canvas from './canvas.js';
+import ColourPicker from './colourpicker.js'
 
 var canvas = new Canvas();
+var colourPicker = new ColourPicker();
 
 var mousedown = false;
+var choosingColour = false;
+
+window.addEventListener('mouseup', function(e){
+    mousedown = false;
+    choosingColour = false;
+});
 
 $(document).ready(function(){
+    $('img').on('dragstart', function(event) { event.preventDefault(); });
     canvas.initializeCanvas();
     canvas.drawGrid();
     canvas.draw();
@@ -40,5 +49,23 @@ $("#change")[0].onmousedown = function(e){
     }
     else{
         alert("Grid size must be between 1 and 100");
+    }
+}
+
+
+$("#colour-selector")[0].onmousedown = function(e){
+    choosingColour = true;
+    var pos = colourPicker.getMousePos(e);
+    canvas.setColour(colourPicker.getColour(e));  
+}
+
+$("#colour-selector")[0].onmouseup = function(e){
+    choosingColour = false;
+}
+
+$("#colour-selector")[0].onmousemove = function(e){
+    if(choosingColour){
+        var pos = colourPicker.getMousePos(e);
+        canvas.setColour(colourPicker.getColour(e)); 
     }
 }

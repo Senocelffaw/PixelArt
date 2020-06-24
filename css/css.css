@@ -21,4 +21,31 @@
   right: 0;
   padding: 0;
 }
+
+#colour-choice {
+  background-color: red;
+  min-height: 50px;
+}
+
+.undraggable {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -o-user-select: none;
+  -ms-user-select: none;
+      user-select: none;
+}
+
+.unselectable {
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+      user-select: none;
+}
+
+#black-gradient {
+  background-image: url("../img/blackgradient.png");
+  -webkit-appearance: none;
+  background-size: cover;
+  height: 25px;
+}
 /*# sourceMappingURL=css.css.map */

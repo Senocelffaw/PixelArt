@@ -116,5 +116,9 @@ export default class Canvas{
         this.drawGrid();
         this.draw();
     }
+
+    setColour(colour){
+        this.currentColour = colour;
+    }
 }
 
