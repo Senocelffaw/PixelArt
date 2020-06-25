@@ -7,7 +7,7 @@ var colourPicker = new ColourPicker();
 var mousedown = false;
 var choosingColour = false;
 
-window.addEventListener('mouseup', function(e){
+$(document).mouseup(function(){
     mousedown = false;
     choosingColour = false;
 });
@@ -68,4 +68,9 @@ $("#colour-selector")[0].onmousemove = function(e){
         var pos = colourPicker.getMousePos(e);
         canvas.setColour(colourPicker.getColour(e)); 
     }
+}
+
+$("#change-hex")[0].onmousedown = function(e){
+    colourPicker.useHexValue($("#hex")[0].value);
+    canvas.setColour($("#hex")[0].value);
 }

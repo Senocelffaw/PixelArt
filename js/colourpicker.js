@@ -16,6 +16,20 @@ export default class ColourPicker{
     }
 
     getColour(mouseEvent){
+        
+        this.curentColour = "#" + this.getRGB(mouseEvent);
+        this.colourChoice.style.backgroundColor = this.curentColour;
+        $("#hex")[0].value = this.curentColour;
+
+        return this.curentColour;
+    }
+
+    getWhiteValue(mouseYPos){
+        var height = this.picker.getBoundingClientRect().height;
+        return Math.floor(mouseYPos/height * 255);
+    }
+
+    getRGB(mouseEvent){
         var pos = this.getMousePos(mouseEvent);
         var width = this.picker.getBoundingClientRect().width;
         var red;
@@ -63,24 +77,38 @@ export default class ColourPicker{
         else{
             blue = 0;
         }
+
+        var white = this.getWhiteValue(pos.y);
+
+        red = red + white;
+        green = green + white;
+        blue = blue + white;
+
+        if(red >= 255){
+            red = 255;
+        }
+        if(green >= 255){
+            green = 255;
+        }
+        if(blue >= 255){
+            blue = 255;
+        }
+
         red = red.toString(16);
         green = green.toString(16);
         blue = blue.toString(16);
 
-        if(red == "0"){
-            red = "00";
+        if(red.length <= 1){
+            red = "0" + red;
         }
-        if(green == "0"){
-            green = "00";
+        if(green.length <= 1){
+            green = "0" + green;
         }
-        if(blue == "0"){
-            blue = "00";
+        if(blue.length <= 1){
+            blue = "0" + blue;
         }
-        
-        this.curentColour = "#" + red + green + blue;
-        this.colourChoice.style.backgroundColor = this.curentColour;
 
-        return this.curentColour;
+        return red + green + blue;
     }
 
     getMousePos(event){
@@ -91,6 +119,13 @@ export default class ColourPicker{
         };
     }
 
-
+    //TODO:: make sure it's a hex RGB number 
+    useHexValue(col){
+        if(col[0] == '#'){
+            this.curentColour = col;
+            this.colourChoice.style.backgroundColor = col;
+        }
+    
+    }
 
 }
