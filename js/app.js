@@ -1,8 +1,10 @@
 import Canvas from './canvas.js';
-import ColourPicker from './colourpicker.js'
+import ColourPicker from './colourpicker.js';
+import DownloadCanvas from './downloadcanvas.js';
 
 var canvas = new Canvas();
 var colourPicker = new ColourPicker();
+var downloadCanvas = new DownloadCanvas(canvas);
 
 var mousedown = false;
 var choosingColour = false;
@@ -89,5 +91,11 @@ $("#black-gradient")[0].onmouseup = function(e){
 $("#black-gradient")[0].onmousemove = function(e){
     if(choosingDarken){
         canvas.setColour(colourPicker.darken());
+    }
+}
+
+$("#download")[0].onmousedown = function(e){
+    if(confirm("Are you sure you want to download a PNG of your picture?")){
+        downloadCanvas.downloadCanvas();
     }
 }

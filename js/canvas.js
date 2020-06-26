@@ -120,5 +120,9 @@ export default class Canvas{
     setColour(colour){
         this.currentColour = colour;
     }
+
+    getArray(){
+        return this.grid;
+    }
 }
 

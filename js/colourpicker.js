@@ -198,4 +198,6 @@ export default class ColourPicker{
         }
         return num;
     }
+
+
 }
