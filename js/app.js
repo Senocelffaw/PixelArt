@@ -6,6 +6,7 @@ var colourPicker = new ColourPicker();
 
 var mousedown = false;
 var choosingColour = false;
+var choosingDarken = false;
 
 $(document).mouseup(function(){
     mousedown = false;
@@ -73,4 +74,20 @@ $("#colour-selector")[0].onmousemove = function(e){
 $("#change-hex")[0].onmousedown = function(e){
     colourPicker.useHexValue($("#hex")[0].value);
     canvas.setColour($("#hex")[0].value);
+}
+
+$("#black-gradient")[0].onmousedown = function(e){
+    choosingDarken = true;
+    canvas.setColour(colourPicker.darken());
+}
+
+$("#black-gradient")[0].onmouseup = function(e){
+    choosingDarken = false;
+    canvas.setColour(colourPicker.darken());
+}
+
+$("#black-gradient")[0].onmousemove = function(e){
+    if(choosingDarken){
+        canvas.setColour(colourPicker.darken());
+    }
 }

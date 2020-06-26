@@ -43,7 +43,6 @@
 }
 
 #black-gradient {
-  background-image: url("../img/blackgradient.png");
   -webkit-appearance: none;
   background-size: cover;
   height: 25px;
