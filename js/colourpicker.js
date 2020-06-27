@@ -48,8 +48,6 @@ export default class ColourPicker{
         green = this.isNegative(parseInt(green) - darken);
         blue = this.isNegative(parseInt(blue) - darken);
 
-        console.log(red + " " + green + " " + blue);
-
         red = red.toString(16);
         green = green.toString(16);
         blue = blue.toString(16);

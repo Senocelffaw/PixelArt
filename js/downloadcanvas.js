@@ -2,11 +2,13 @@ export default class DownloadCanvas{
     canvasToDownload;
     offscreenCanvas;
     ctx;
+    pixelSizeInput;
 
     constructor(theCanvasToDownload){
         this.canvasToDownload = theCanvasToDownload;
         this.offscreenCanvas = document.createElement("canvas");
         this.ctx = this.offscreenCanvas.getContext("2d");
+        this.pixelSizeInput = $("#image-size")[0].value;
     }
 
     drawPixelsOnOffscreenCanvas(array2d){
@@ -25,14 +27,50 @@ export default class DownloadCanvas{
 
     downloadCanvas(){
         this.drawPixelsOnOffscreenCanvas(this.canvasToDownload.getArray());
+        
+        if(this.validatePixelImageSize()){
+            var url = this.offscreenCanvas.toDataURL();
+            var img = new Image;
+            img.src = url;
 
-        var url = this.offscreenCanvas.toDataURL();
-        var tempElement = document.createElement("a");
+            this.offscreenCanvas.width = this.pixelSizeInput;
+            this.offscreenCanvas.height = this.pixelSizeInput;
 
-        document.body.appendChild(tempElement);
-        tempElement.href = url;
-        tempElement.download = "canvas-image.png";
-        tempElement.click();
-        document.body.removeChild(tempElement);
+            this.ctx.imageSmoothingEnabled = false;
+            this.ctx.drawImage(img, 0, 0, this.pixelSizeInput, this.pixelSizeInput);
+
+            url = this.offscreenCanvas.toDataURL();
+
+            var tempElement = document.createElement("a");
+            this.ctx.imageSmoothingEnabled = false;
+            this.ctx.drawImage(img, 0, 0, this.pixelSizeInput, this.pixelSizeInput);
+
+            document.body.appendChild(tempElement);
+            tempElement.href = url;
+            tempElement.download = "canvas-image.png";
+            tempElement.click();
+            document.body.removeChild(tempElement);
+        }
+        else{
+            var url = this.offscreenCanvas.toDataURL();
+            var tempElement = document.createElement("a");
+    
+            document.body.appendChild(tempElement);
+            tempElement.href = url;
+            tempElement.download = "canvas-image.png";
+            tempElement.click();
+            document.body.removeChild(tempElement);
+        }
+
+    }
+
+    validatePixelImageSize(){
+        this.pixelSizeInput = $("#image-size")[0].value;
+        if(this.pixelSizeInput > this.canvasToDownload.getArray().length){
+            if(this.pixelSizeInput <= 1000){
+                return true;
+            }
+        }
+        return false;
     }
 }

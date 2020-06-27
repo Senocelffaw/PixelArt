@@ -52,14 +52,14 @@ export default class Canvas{
                         this.grid[j][i] = "#FFFFFF";
                     }
                     else{
-                        this.ctx.fillStyle = "#d3d3d3";
-                        this.grid[j][i] = "#d3d3d3";
+                        this.ctx.fillStyle = "#94948c";
+                        this.grid[j][i] = "#94948c";
                     }
                 }
                 else{
                     if(j % 2 == 0){
-                        this.ctx.fillStyle = "#d3d3d3";
-                        this.grid[j][i] = "#d3d3d3";
+                        this.ctx.fillStyle = "#94948c";
+                        this.grid[j][i] = "#94948c";
                     }
                     else{
                         this.ctx.fillStyle = "#FFFFFF";
