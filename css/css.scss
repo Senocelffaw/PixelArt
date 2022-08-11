@@ -1,0 +1,99 @@
+*{
+    margin:0;
+    padding:0;
+}
+
+.tool-tip{
+    position: absolute;
+    top: 10px;
+    left: 100px;
+    z-index: 10;
+    background-color: wheat;
+    width: 200px;
+    border-radius: 5px;
+    pointer-events: none;
+}
+
+.hide{
+    opacity: 0;
+}
+
+#myCanvas{
+    border: 1px solid black;
+    padding: 0;
+}
+
+#canvas{
+    margin: auto;
+}
+
+#left-side-bar{
+    width: 250px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 0;
+    transition: 200ms linear;
+}
+
+
+#right-side-bar{
+    width: 250px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 0;
+}
+
+#colour-choice{
+    background-color: red;
+    min-height: 50px;
+}
+
+.undraggable{
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+}
+
+.unselectable{
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+#black-gradient{
+    -webkit-appearance: none;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    height: 25px;
+}
+
+
+.hide-sidebar{
+    background-color: aqua;
+    transform: translate(-300px, 0px);
+    transition: all 0.5s ease-in-out
+}
+
+.open-sidebar{
+    position: absolute;
+    margin-top: 0;
+    margin-left: 1.2rem;
+    margin-bottom: 0;
+    left:0;
+}
+
+#close-sidebar-button{
+    margin-top: 5px;
+    margin-right: 5px;
+}
+
+#open-sidebar-button{
+    color: white;
+    font-size: 3rem;
+}

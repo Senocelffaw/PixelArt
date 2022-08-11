@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/css.css">
+    <title>Document</title>
+</head>
+<body>
+
+    <div class=" container-fluid bg-dark ">
+        <p id="open-sidebar-button" class="open-sidebar">☰</p>
+        <!------Left Sidebar-->
+        <div id="left-side-bar" class="bg-secondary min-vh-100 hide-sidebar ">
+            <div class="d-flex justify-content-end mb-2">
+                <p id="close-sidebar-button" class="mt-2 mr-2">✖</p>
+            </div>
+            <div class="left-side-wrapper m-auto col-md-12">
+
+               <div>
+                <img src="../img/colourpicker.png" id="colour-selector" draggable="false" class="col-12  unselectable p-0" alt="Colour Picker">
+                <input id="black-gradient" type="range" min="1" max="100" value="1" class="col-12 p-0 mt-2">
+                <div id="colour-choice" class="col-10 container"></div>
+                <input id="hex" type="text" class="my-2 col-12 text-center" maxlength="7" placeholder="Hex colour value here">
+                <button id="change-hex" class="btn btn-primary col-12">Use Hex value</button>
+               </div>
+
+                <button id="clear" class="btn btn-primary col-12 mt-3">Clear Canvas</button>
+
+                <div class="col-12 row w-100 p-0 my-2 ml-0 my-5">
+                    <div class="my-2 row p-0 m-0">
+                        <p class="col-6 p-0 m-0 d-flex text-left">Board Size: <span id="tool-tip-1">❓</span></p>
+
+                        <p id="tool-tip-1-content" class="tool-tip hide">This changes the size of the canvas from the default to X by X </p>
+
+                        <input type="number" id="grid-size" class="col-6 p-0 d-flex justify-content-end" min="0" max="500">
+                    </div>
+                    <button id="change" class="btn btn-warning col-12">Change Board Size</button>
+                </div>
+
+
+                <div class="d-flex justify-content-between col-12 p-0 mt-5">
+                    <p class="col-6 p-0 m-0">Pixel size:<span id="tool-tip-2">❓</span></p>
+                    <p id="tool-tip-2-content" class="tool-tip hide">Download an image of the canvas with the size of X by X</p>
+                    <input id="image-size" type="number" required pattern="[0-9\.]+" max="1000" class="col-6 text-center p-0">
+                </div>
+
+                <button id="download" class="btn btn-primary col-12 my-2">download</button>
+            </div>
+        </div>
+
+        <!------Canvas----->
+        <div id="canvas" class="row d-flex align-items-center justify-content-center min-vh-100">
+            <canvas id="myCanvas">Your browser does not support the HTML5 canvas tag.</canvas>
+        </div>
+
+    </div>
+
+    <script src="../js/jquery.min.js"></script>
+    <script src="../js/popper.min.js"></script>
+    <script src="../js/bootstrap.bundle.min.js"></script>
+    <script type="module" src="../js/app.js"></script>
+</body>
+</html>
